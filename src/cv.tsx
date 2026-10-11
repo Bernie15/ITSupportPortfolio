@@ -23,7 +23,7 @@ const education = [
 
 const technicalSkills = {
   'Front-End': ['React', 'TypeScript', 'HTML5 / CSS3'],
-  'Back-End': ['ASP.NET Core (MVC & Web API)', 'C#', 'Entity Framework Core', 'Node.js / Express'],
+  'Back-End': [ 'Node.js / Express'],
   'Databases': ['SQL Server', 'PostgreSQL', 'SSMS'],
   'API & Testing': ['RESTful API Design', 'Postman','Google APIs'],
   'Tools & Workflow': ['Git / GitHub', 'Visual Studio / VS Code', 'Agile / Scrum', 'N8N'],
