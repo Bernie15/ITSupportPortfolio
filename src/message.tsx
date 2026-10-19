@@ -1,53 +1,42 @@
-import { useState, useEffect } from 'react'
 import heroVid from './assets/Hero.webm'
 import CV from './cv'
 
 const featuredProjects = [
   {
-    title: 'Financial Tracker',
-    description: 'Budget categories, recurring transactions, charts, and generate monthly report using AI.',
-    stack: ['React', 'JavaScript', 'Vite','PostgreSQL', 'Node.js'],
-    link: 'https://financial-tracker-liard.vercel.app/',
+    title: 'Global Service Desk',
+    description: 'Supported users by phone and chat, taking ownership of incidents from first contact through troubleshooting, documentation, or escalation.',
+    stack: ['ServiceNow', 'Service Manager SM9', 'ITIL v4'],
   },
   {
-    title: 'Web Scraping for Data Collection',
-    description: 'Automated workflows for scraping and storing data from multiple sources, with a REST API for retrieval.',
-    stack: ['React','N8N', 'Google APIs'],
+    title: 'CargoWise Helpdesk',
+    description: 'Managed user-submitted tickets, user accounts, system errors, and maintenance requests while helping improve support workflows.',
+    stack: ['CargoWise', 'Zoho Desk', 'Knowledge Base'],
   },
   {
-    title: 'AI Chat Agent',
-    description: 'Social feed with profiles, comments, likes, post composer flows, and JWT-authenticated routes.',
-    stack: ['React', 'React Router', 'Node.js', 'JWT'],
+    title: 'Remote User Support',
+    description: 'Troubleshot access, connectivity, application, email, meeting, and peripheral issues remotely; documented work and routed complex cases to resolver groups.',
+    stack: ['AnyDesk', 'LogMeIn', 'Microsoft 365', 'Active Directory'],
   },
 ]
 
-const stack = ['React', 'Node.js', 'PostgreSQL']
-const neonHighlight = new Set(['React', 'Node.js', 'PostgreSQL'])
+const stack = ['L1–L2 Support', 'Ticket Ownership', 'Remote Troubleshooting', 'ITIL']
+const neonHighlight = new Set(['L1–L2 Support', 'Remote Troubleshooting', 'ITIL'])
 
 const contactLinks = [
   { label: 'Email', value: 'montalbanbernardallen@gmail.com', href: 'mailto:montalbanbernardallen@gmail.com' },
-  { label: 'GitHub', value: 'github.com/reactforge', href: 'https://github.com' },
+  { label: 'Phone', value: '+63 963 328 7824', href: 'tel:+639633287824' },
   { label: 'LinkedIn', value: 'linkedin.com/in/bernard-montalban', href: 'https://www.linkedin.com/in/bernard-montalban-9194a2217/' },
 ]
 
 function Message() {
-  const [toast, setToast] = useState<string | null>(null)
-
-  useEffect(() => {
-    if (toast) {
-      const timer = setTimeout(() => setToast(null), 2500)
-      return () => clearTimeout(timer)
-    }
-  }, [toast])
-
   return (
     <main className="portfolio">
       {/* Nav */}
       <header className="nav">
-        <a className="nav-brand" href="#top">MyPortfolio</a>
+        <a className="nav-brand" href="#top">Bernard Montalban</a>
         <nav className="nav-links" aria-label="Primary navigation">
-          <a href="#work">Work</a>
-          <a href="#cv">CV</a>
+          <a href="#work">Support</a>
+          <a href="#cv">Experience</a>
           <a href="#about">About</a>
           <a href="#contact">Contact</a>
         </nav>
@@ -58,16 +47,16 @@ function Message() {
         <div className="hero-row">
           <div className="hero-portrait-wrap">
             <video className="hero-portrait" src={heroVid} autoPlay loop muted playsInline />
-            <span className="hero-status"><span className="status-dot" />Available</span>
+            <span className="hero-status"><span className="status-dot" />Open to MSP roles</span>
           </div>
           <div className="hero-text">
-            <p className="label">React Developer</p>
-            <h1>I build fast, <span className="gradient-text">polished</span> web apps.</h1>
+            <p className="label">IT Support | Service Desk</p>
+            <h1>I keep teams <span className="gradient-text">working</span> with reliable IT support.</h1>
             <p className="hero-sub">
-              Front-end systems with React, JavaScript, TypeScript, and clean API integration — designed to feel sharp, handle real data, and stay maintainable. I use Vibe Coding and AI assisted Programming to speed up building new websites.
+              Service desk professional with around three years of experience supporting users, resolving L1–L2 issues, managing tickets, and troubleshooting remotely. Ready to bring a calm, customer-first approach to an MSP support team.
             </p>
             <div className="hero-actions">
-              <a className="btn btn-primary" href="#work">View projects</a>
+              <a className="btn btn-primary" href="#work">Support experience</a>
               <a className="btn btn-ghost" href="#contact">Get in touch</a>
             </div>
           </div>
@@ -76,7 +65,7 @@ function Message() {
 
       {/* Stack */}
       <section className="section" id="stack">
-        <p className="label">Stack</p>
+        <p className="label">Core strengths</p>
         <ul className="stack-list">
           {stack.map((item) => (
             <li key={item} className={neonHighlight.has(item) ? 'neon' : ''}>{item}</li>
@@ -86,20 +75,12 @@ function Message() {
 
       {/* Work */}
       <section className="section" id="work">
-        <p className="label">Selected work</p>
-        <h2>Projects built around React and real API integrations.</h2>
+        <p className="label">Support experience</p>
+        <h2>Practical user support across service desk and helpdesk environments.</h2>
         <div className="project-grid">
           {featuredProjects.map((p) => (
-            <article
-              className={`project-card${'link' in p && p.link ? '' : ' project-card--upcoming'}`}
-              key={p.title}
-              onClick={() => {
-                if (!('link' in p && p.link)) {
-                  setToast(`${p.title} — Available soon!`)
-                }
-              }}
-            >
-              <h3>{'link' in p && p.link ? <a href={p.link} target="_blank" rel="noreferrer">{p.title}</a> : p.title}</h3>
+            <article className="project-card" key={p.title}>
+              <h3>{p.title}</h3>
               <p>{p.description}</p>
               <ul className="tag-list">
                 {p.stack.map((t) => (
@@ -120,15 +101,12 @@ function Message() {
         <div className="about-grid">
           <div className="about-card about-card--accent">
             <p>
-              I specialize in React development — API integration, dynamic data rendering,
-              authentication flows, and maintainable component systems. I care about how the
-              app feels and how it behaves under real usage.
+              I’m an IT support professional with experience in global service desk and CargoWise helpdesk work. I enjoy making technical issues understandable, restoring users’ access, and keeping people productive.
             </p>
           </div>
           <div className="about-card">
             <p>
-              My workflow: plan the data model, wire UI against live or mocked endpoints,
-              handle loading and error states, then refine performance across desktop and mobile.
+              My approach is to listen, troubleshoot methodically, keep the user informed, document each interaction, and escalate with clear context when an issue needs another resolver group.
             </p>
           </div>
         </div>
@@ -137,9 +115,9 @@ function Message() {
       {/* Contact */}
       <section className="section section--contact" id="contact">
         <p className="label">Contact</p>
-        <h2>Let's work together.</h2>
+        <h2>Let’s keep your users productive.</h2>
         <p className="contact-sub">
-          Open to freelance, internships, and junior-to-mid front-end roles focused on React.
+          Open to entry-level IT support and service desk opportunities with managed service providers.
         </p>
         <div className="contact-links">
           {contactLinks.map((link) => (
@@ -157,15 +135,9 @@ function Message() {
         </div>
         <div className="hero-actions">
           <a className="btn btn-primary" href="mailto:montalbanbernardallen@gmail.com">Send email</a>
-          <a className="btn btn-ghost" href="https://github.com" target="_blank" rel="noreferrer">GitHub</a>
+          <a className="btn btn-ghost" href="https://www.linkedin.com/in/bernard-montalban-9194a2217/" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </section>
-      {/* Toast notification */}
-      {toast && (
-        <div className="toast" role="alert">
-          {toast}
-        </div>
-      )}
     </main>
   )
 }
